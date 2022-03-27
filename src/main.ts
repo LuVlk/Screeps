@@ -1,4 +1,4 @@
-import { CreepController } from "./creeps/CreepController";
+import { CreepController } from "./CreepController";
 import { ErrorMapper } from "utils/ErrorMapper";
 
 const creepController = new CreepController();
