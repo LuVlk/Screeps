@@ -1,13 +1,13 @@
-import { Harvester, ICreepRole, Upgrader } from "./creeps";
-import { Dictionary } from "lodash";
+import { CreepRunner, Harvester, Upgrader } from "./creep/runner";
+import { CreepRole } from "./creep";
 
 export class CreepController {
-  private _roles: Dictionary<ICreepRole> = {
-    harvester: new Harvester(),
-    upgrader: new Upgrader()
-  };
+  private _runner: Map<CreepRole, CreepRunner> = new Map([
+    [CreepRole.HARVESTER, new Harvester()],
+    [CreepRole.UPGRADER, new Upgrader()]
+  ]);
 
   public run(): void {
-    Object.values(Game.creeps).map(creep => this._roles[creep.memory.role].run(creep));
+    Object.values(Game.creeps).map(creep => this._runner.get(creep.memory.role)?.run(creep));
   }
 }

@@ -1,6 +1,6 @@
-import { ICreepRole } from "./ICreepRole";
+import { CreepRunner } from "./CreepRunner";
 
-export class Upgrader implements ICreepRole {
+export class Harvester implements CreepRunner {
   public run(creep: Creep): void {
     if (creep.store.getFreeCapacity() > 0) {
       const sources = creep.room.find(FIND_SOURCES);
@@ -8,10 +8,8 @@ export class Upgrader implements ICreepRole {
         creep.moveTo(sources[0]);
       }
     } else {
-      if (creep.room.controller) {
-        if (creep.upgradeController(creep.room.controller) === ERR_NOT_IN_RANGE) {
-          creep.moveTo(creep.room.controller);
-        }
+      if (creep.transfer(Game.spawns.Spawn1, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
+        creep.moveTo(Game.spawns.Spawn1);
       }
     }
   }
