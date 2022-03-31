@@ -27,8 +27,12 @@ export class ColonyController {
       }
 
       if (existingCreeps.length < colonyGroup.replicas) {
-        Game.spawns.Spawn1.spawnCreep(colonyGroup.creep.bodyParts, uniqueId(colonyGroup.creep.role), {
-          memory: { role: colonyGroup.creep.role }
+        const spawn = Game.spawns.Spawn1;
+        spawn.spawnCreep(colonyGroup.creep.bodyParts, uniqueId(colonyGroup.creep.role), {
+          memory: {
+            role: colonyGroup.creep.role,
+            state: colonyGroup.creep.initialState
+          }
         });
       }
     }

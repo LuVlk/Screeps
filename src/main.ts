@@ -3,23 +3,19 @@ import { ColonyGroup } from "./ColonyGroup";
 import { CreepController } from "./CreepController";
 import { CreepRole } from "./creep";
 import { ErrorMapper } from "utils/ErrorMapper";
+import { Upgrader } from "./creep/upgrader/Upgrader";
+import { Harvester } from "./creep/harvester/Harvester";
 
 const colonyController = new ColonyController();
 const creepController = new CreepController();
 
 const colony: ColonyGroup[] = [
   {
-    creep: {
-      role: CreepRole.HARVESTER,
-      bodyParts: [WORK, CARRY, MOVE]
-    },
+    creep: new Upgrader(),
     replicas: 2
   },
   {
-    creep: {
-      role: CreepRole.UPGRADER,
-      bodyParts: [WORK, CARRY, MOVE]
-    },
+    creep: new Harvester(),
     replicas: 2
   }
 ];

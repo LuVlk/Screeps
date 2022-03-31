@@ -1,10 +1,11 @@
-import { CreepRunner, Harvester, Upgrader } from "./creep/runner";
-import { CreepRole } from "./creep";
+import { CreepRole, CreepRunner } from "./creep";
+import { HarvesterRunner } from "./creep/harvester/Harvester";
+import { UpgraderRunner } from "./creep/upgrader/Upgrader";
 
 export class CreepController {
   private _runner: Map<CreepRole, CreepRunner> = new Map([
-    [CreepRole.HARVESTER, new Harvester()],
-    [CreepRole.UPGRADER, new Upgrader()]
+    [CreepRole.HARVESTER, new HarvesterRunner()],
+    [CreepRole.UPGRADER, new UpgraderRunner()]
   ]);
 
   public run(): void {

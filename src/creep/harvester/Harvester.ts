@@ -1,6 +1,13 @@
-import { CreepRunner } from "./CreepRunner";
+import { CreepRunner } from "../CreepRunner";
+import { CreepDefinition } from "../CreepDefinition";
+import { CreepRole } from "../CreepRole";
 
-export class Harvester implements CreepRunner {
+export class Harvester implements CreepDefinition {
+  public role: CreepRole = CreepRole.HARVESTER;
+  public bodyParts: BodyPartConstant[] = [WORK, CARRY, MOVE];
+}
+
+export class HarvesterRunner implements CreepRunner {
   public run(creep: Creep): void {
     if (creep.store.getFreeCapacity() > 0) {
       const sources = creep.room.find(FIND_SOURCES);
