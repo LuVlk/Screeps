@@ -1,31 +1,31 @@
-import { CreepRunner } from "../CreepRunner";
 import { CreepDefinition } from "../CreepDefinition";
 import { CreepRole } from "../CreepRole";
+import { CreepRunner } from "../CreepRunner";
 
-interface UpgraderState {
+interface UpgraderMode {
   upgrading: boolean;
 }
 
 export class Upgrader implements CreepDefinition {
   public role: CreepRole = CreepRole.UPGRADER;
   public bodyParts: BodyPartConstant[] = [WORK, CARRY, MOVE];
-  public initialState: UpgraderState = { upgrading: false };
+  public initialState: UpgraderMode = { upgrading: false };
 }
 
 export class UpgraderRunner implements CreepRunner {
   public run(creep: Creep): void {
     if (creep.room.controller) {
-      const creepState = creep.memory.state as UpgraderState;
+      const creepMode = creep.memory.mode as UpgraderMode;
 
-      if (!creep.store.getUsedCapacity(RESOURCE_ENERGY) && creepState.upgrading) {
-        creepState.upgrading = false;
-        creep.memory.state = creepState;
-      } else if (!creep.store.getFreeCapacity(RESOURCE_ENERGY) && !creepState.upgrading) {
-        creepState.upgrading = true;
-        creep.memory.state = creepState;
+      if (!creep.store.getUsedCapacity(RESOURCE_ENERGY) && creepMode.upgrading) {
+        creepMode.upgrading = false;
+        creep.memory.mode = creepMode;
+      } else if (!creep.store.getFreeCapacity(RESOURCE_ENERGY) && !creepMode.upgrading) {
+        creepMode.upgrading = true;
+        creep.memory.mode = creepMode;
       }
 
-      if (creepState.upgrading) {
+      if (creepMode.upgrading) {
         if (creep.upgradeController(creep.room.controller) === ERR_NOT_IN_RANGE) {
           creep.moveTo(creep.room.controller);
         }

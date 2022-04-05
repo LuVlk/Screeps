@@ -5,6 +5,6 @@ export {};
 declare global {
   interface CreepMemory {
     role: CreepRole;
-    state: unknown;
+    mode: unknown;
   }
 }
