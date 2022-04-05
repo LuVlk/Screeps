@@ -6,14 +6,14 @@ interface UpgraderMode {
   upgrading: boolean;
 }
 
-export class Upgrader implements CreepDefinition {
-  public role: CreepRole = CreepRole.UPGRADER;
-  public bodyParts: BodyPartConstant[] = [WORK, CARRY, MOVE];
-  public initialMode: UpgraderMode = { upgrading: false };
-}
+export const Upgrader: CreepDefinition = {
+  role: CreepRole.UPGRADER,
+  bodyParts: [WORK, CARRY, MOVE],
+  initialMode: { upgrading: false }
+};
 
-export class UpgraderRunner implements CreepRunner {
-  public run(creep: Creep): void {
+export const UpgraderRunner: CreepRunner = {
+  run(creep: Creep): void {
     if (creep.room.controller) {
       const creepMode = creep.memory.mode as UpgraderMode;
 
@@ -37,4 +37,4 @@ export class UpgraderRunner implements CreepRunner {
       }
     }
   }
-}
+};

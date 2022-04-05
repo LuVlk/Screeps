@@ -2,7 +2,7 @@ import { ColonyGroup } from "./ColonyGroup";
 import { CreepRole } from "./creep";
 import { uniqueId } from "lodash";
 
-export class ColonyController {
+class ColonyController {
   private _creeps: Map<CreepRole, ColonyGroup> = new Map();
 
   public apply(group: ColonyGroup): void {
@@ -38,3 +38,5 @@ export class ColonyController {
     }
   }
 }
+
+export const colonyController = new ColonyController();

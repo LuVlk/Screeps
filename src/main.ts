@@ -1,20 +1,17 @@
-import { ColonyController } from "./ColonyController";
+import { colonyController } from "./ColonyController";
 import { ColonyGroup } from "./ColonyGroup";
-import { CreepController } from "./CreepController";
+import { creepController } from "./CreepController";
 import { ErrorMapper } from "utils/ErrorMapper";
 import { Harvester } from "./creep/harvester/Harvester";
 import { Upgrader } from "./creep/upgrader/Upgrader";
 
-const colonyController = new ColonyController();
-const creepController = new CreepController();
-
 const colony: ColonyGroup[] = [
   {
-    creep: new Upgrader(),
+    creep: Upgrader,
     replicas: 2
   },
   {
-    creep: new Harvester(),
+    creep: Harvester,
     replicas: 2
   }
 ];

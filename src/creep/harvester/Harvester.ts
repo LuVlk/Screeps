@@ -2,13 +2,13 @@ import { CreepRunner } from "../CreepRunner";
 import { CreepDefinition } from "../CreepDefinition";
 import { CreepRole } from "../CreepRole";
 
-export class Harvester implements CreepDefinition {
-  public role: CreepRole = CreepRole.HARVESTER;
-  public bodyParts: BodyPartConstant[] = [WORK, CARRY, MOVE];
-}
+export const Harvester: CreepDefinition = {
+  role: CreepRole.HARVESTER,
+  bodyParts: [WORK, CARRY, MOVE]
+};
 
-export class HarvesterRunner implements CreepRunner {
-  public run(creep: Creep): void {
+export const HarvesterRunner: CreepRunner = {
+  run(creep: Creep): void {
     if (creep.store.getFreeCapacity() > 0) {
       const sources = creep.room.find(FIND_SOURCES);
       if (creep.harvest(sources[0]) === ERR_NOT_IN_RANGE) {
@@ -20,4 +20,4 @@ export class HarvesterRunner implements CreepRunner {
       }
     }
   }
-}
+};
