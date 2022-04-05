@@ -31,7 +31,7 @@ export class ColonyController {
         spawn.spawnCreep(colonyGroup.creep.bodyParts, uniqueId(colonyGroup.creep.role), {
           memory: {
             role: colonyGroup.creep.role,
-            state: colonyGroup.creep.initialState
+            mode: colonyGroup.creep.initialMode
           }
         });
       }

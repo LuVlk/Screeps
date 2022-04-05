@@ -1,10 +1,9 @@
 import { ColonyController } from "./ColonyController";
 import { ColonyGroup } from "./ColonyGroup";
 import { CreepController } from "./CreepController";
-import { CreepRole } from "./creep";
 import { ErrorMapper } from "utils/ErrorMapper";
-import { Upgrader } from "./creep/upgrader/Upgrader";
 import { Harvester } from "./creep/harvester/Harvester";
+import { Upgrader } from "./creep/upgrader/Upgrader";
 
 const colonyController = new ColonyController();
 const creepController = new CreepController();

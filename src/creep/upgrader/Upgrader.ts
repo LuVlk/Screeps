@@ -9,7 +9,7 @@ interface UpgraderMode {
 export class Upgrader implements CreepDefinition {
   public role: CreepRole = CreepRole.UPGRADER;
   public bodyParts: BodyPartConstant[] = [WORK, CARRY, MOVE];
-  public initialState: UpgraderMode = { upgrading: false };
+  public initialMode: UpgraderMode = { upgrading: false };
 }
 
 export class UpgraderRunner implements CreepRunner {
