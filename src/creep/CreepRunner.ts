@@ -1,3 +1,3 @@
 export interface CreepRunner {
-  run: (creep: Creep) => void;
+  run: (creep: Creep, overrideMode?: unknown) => unknown;
 }

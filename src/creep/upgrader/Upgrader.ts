@@ -13,16 +13,13 @@ export const Upgrader: CreepDefinition = {
 };
 
 export const UpgraderRunner: CreepRunner = {
-  run(creep: Creep): void {
+  run(creep: Creep, overrideMode?: unknown): UpgraderMode {
+    const creepMode = (overrideMode ? overrideMode : creep.memory.mode) as UpgraderMode;
     if (creep.room.controller) {
-      const creepMode = creep.memory.mode as UpgraderMode;
-
       if (!creep.store.getUsedCapacity(RESOURCE_ENERGY) && creepMode.upgrading) {
         creepMode.upgrading = false;
-        creep.memory.mode = creepMode;
       } else if (!creep.store.getFreeCapacity(RESOURCE_ENERGY) && !creepMode.upgrading) {
         creepMode.upgrading = true;
-        creep.memory.mode = creepMode;
       }
 
       if (creepMode.upgrading) {
@@ -36,5 +33,6 @@ export const UpgraderRunner: CreepRunner = {
         }
       }
     }
+    return creepMode;
   }
 };
